@@ -5,9 +5,11 @@ const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
 const postRouter = require("./routes/posts");
 const categoryRouter = require("./routes/categories");
+const contactRouter = require("./routes/contact");
 const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
+// const Contact = require("./models/Contact");
 
 const app = express();
 
@@ -38,6 +40,17 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/posts",  postRouter);
 app.use("/api/category", categoryRouter);
+app.use("/api/contacts", contactRouter);
+
+// app.post("/api/contact/", async(req, res)=>{
+//     const contactNew = new Contact(req.body);
+//     try{
+//         const hosaContact = await contactNew.save();
+//         res.status(200).json(hosaContact);
+//     }catch(e){
+//         res.status(501).json(e);
+//     }
+// });
 
 app.listen("5000",()=>{
     console.log("Server is running on port 5000")
